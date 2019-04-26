@@ -94,7 +94,6 @@ public class ChooseAreaFragment extends Fragment {
                         activity.swipeRefreshLayout.setRefreshing(true);
                         activity.requestWeather(weatherId);
                     }
-
                 }
             }
         });

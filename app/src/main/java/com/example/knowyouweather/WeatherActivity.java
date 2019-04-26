@@ -133,6 +133,7 @@ public class WeatherActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
                             editor.putString("weather", responseText);
                             editor.apply();
+                            mWeatherId = weather.basic.weatherId;///一定在次更新weatherid，否则手动刷新会回到最初选择的城市
                             showWeatherInfo(weather);
                             Intent intent = new Intent(WeatherActivity.this, AutoUpdateService.class);
                             startService(intent);
@@ -174,6 +175,7 @@ public class WeatherActivity extends AppCompatActivity {
             TextView maxText = view.findViewById(R.id.max_text);
             TextView minText = view.findViewById(R.id.min_text);
             TextView infoText = view.findViewById(R.id.info_text);
+            Log.d("forecast","forecast:"+forecast);
             dataText.setText(forecast.date);
             maxText.setText(forecast.temperature.max);
             minText.setText(forecast.temperature.min);
